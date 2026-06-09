@@ -16,12 +16,13 @@
     <div class="bg-grid" aria-hidden="true"></div>
     <div class="noise-overlay" aria-hidden="true"></div>
 
-    <!-- Cursor follower -->
-    <div class="cursor-glow" aria-hidden="true"></div>
-
     <!-- Nav -->
     <nav class="nav">
-        <span class="nav-logo">AK</span>
+        <div class="nav-brand">
+            <span class="nav-logo">AK</span>
+            <!-- ↓ Edit this caption however you like -->
+            <span class="nav-caption">building things that feel human</span>
+        </div>
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -39,8 +40,8 @@
                     Available for internships &amp; collaborations
                 </p>
                 <h1 class="hero-name">
-                    <span class="name-word" data-word="Aakash">Aakash</span>
-                    <span class="name-word" data-word="Kumar">Kumar</span>
+                    <span class="name-word">Aakash</span>
+                    <span class="name-word">Kumar</span>
                 </h1>
                 <p class="hero-tagline">
                     <span class="typed" id="typed" aria-label="Building thoughtful technology"></span><span class="cursor" aria-hidden="true">|</span>
@@ -64,7 +65,6 @@
                     </a>
                 </div>
             </div>
-
             <div class="scroll-indicator" aria-hidden="true">
                 <span>scroll</span>
                 <div class="scroll-line"></div>
@@ -78,15 +78,8 @@
                 <div class="about-grid">
                     <div class="about-text reveal">
                         <h2>I build things that care about people.</h2>
-                        <p>
-                            I'm a Computer Science student with a focus on building technology that feels human.
-                            My work spans AI systems, full-stack development, and product thinking —
-                            with a recurring obsession: how software can understand context, not just commands.
-                        </p>
-                        <p>
-                            When I'm not coding, I'm thinking about the gap between how people feel and how
-                            well current technology serves that. That's the problem Aether is trying to close.
-                        </p>
+                        <p>I'm a Computer Science student with a focus on building technology that feels human. My work spans AI systems, full-stack development, and product thinking — with a recurring obsession: how software can understand context, not just commands.</p>
+                        <p>When I'm not coding, I'm thinking about the gap between how people feel and how well current technology serves that. That's the problem Aether is trying to close.</p>
                     </div>
                     <div class="skills-grid reveal">
                         <div class="skill-chip">Python</div>
@@ -104,7 +97,7 @@
 
         <!-- Projects — Horizontal Scroll -->
         <section class="section projects-section" id="projects">
-            <div class="projects-header section-inner reveal">
+            <div class="projects-header reveal">
                 <p class="section-label">Projects</p>
                 <h2 class="section-title">Things I've built</h2>
                 <p class="projects-scroll-hint">
@@ -113,13 +106,12 @@
                 </p>
             </div>
 
-            <!-- Sticky horizontal scroll container -->
             <div class="projects-sticky-outer" id="projectsOuter">
                 <div class="projects-sticky-inner">
                     <div class="projects-track" id="projectsTrack">
 
                         <!-- Card 1: Aether -->
-                        <article class="pcard pcard--featured">
+                        <article class="pcard" data-project="aether" tabindex="0" role="button" aria-label="Open Aether project details">
                             <div class="pcard-image">
                                 <div class="pcard-image-inner aether-visual">
                                     <div class="aether-demo-inner">
@@ -129,58 +121,38 @@
                                         </div>
                                         <div class="demo-body">
                                             <p class="demo-label">Today's mood</p>
-                                            <div class="mood-bar-wrap">
-                                                <div class="mood-bar" style="--fill: 72%"></div>
-                                            </div>
+                                            <div class="mood-bar-wrap"><div class="mood-bar" style="--fill: 72%"></div></div>
                                             <p class="demo-insight">Feeling focused. Recommended: lo-fi study playlist.</p>
-                                            <div class="demo-tags">
-                                                <span>Journaling</span>
-                                                <span>Community</span>
-                                                <span>Insights</span>
-                                            </div>
+                                            <div class="demo-tags"><span>Journaling</span><span>Community</span><span>Insights</span></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="pcard-number">01</div>
+                                <div class="pcard-click-hint">Click to explore →</div>
                             </div>
                             <div class="pcard-body">
                                 <div class="pcard-top">
                                     <span class="pcard-tag">In development</span>
-                                    <div class="pcard-links">
-                                        <a href="#" class="icon-link" aria-label="View on GitHub">
-                                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.489.5.09.682-.218.682-.483 0-.237-.009-.868-.014-1.703-2.782.602-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
-                                        </a>
-                                    </div>
                                 </div>
                                 <h3 class="pcard-title">Aether</h3>
-                                <p class="pcard-desc">An AI-powered mental and physical wellness platform. Aether tracks mood, analyzes emotional patterns over time, recommends music matched to your state, and connects you to a community that understands. It doesn't just log — it listens.</p>
-                                <ul class="project-tech">
-                                    <li>React</li>
-                                    <li>Python / FastAPI</li>
-                                    <li>OpenAI API</li>
-                                    <li>PostgreSQL</li>
-                                    <li>Spotify API</li>
-                                </ul>
+                                <p class="pcard-desc">An AI-powered mental and physical wellness platform. Tracks mood, analyzes emotional patterns, recommends music matched to your state. It doesn't just log — it listens.</p>
+                                <ul class="project-tech"><li>React</li><li>Python / FastAPI</li><li>OpenAI API</li><li>PostgreSQL</li><li>Spotify API</li></ul>
                             </div>
                         </article>
 
                         <!-- Card 2: RAG Search -->
-                        <article class="pcard">
+                        <article class="pcard" data-project="rag" tabindex="0" role="button" aria-label="Open RAG project details">
                             <div class="pcard-image">
                                 <div class="pcard-image-inner rag-visual">
                                     <div class="rag-demo">
                                         <div class="rag-row">
                                             <span class="rag-label">RAG</span>
-                                            <div class="rag-bar rag-bar--semantic">
-                                                <div class="rag-fill" style="--w: 91%"></div>
-                                            </div>
+                                            <div class="rag-bar rag-bar--semantic"><div class="rag-fill" style="--w: 91%"></div></div>
                                             <span class="rag-score">91%</span>
                                         </div>
                                         <div class="rag-row">
                                             <span class="rag-label">KWD</span>
-                                            <div class="rag-bar">
-                                                <div class="rag-fill" style="--w: 43%"></div>
-                                            </div>
+                                            <div class="rag-bar"><div class="rag-fill" style="--w: 43%"></div></div>
                                             <span class="rag-score">43%</span>
                                         </div>
                                         <div class="rag-query">
@@ -193,29 +165,20 @@
                                     </div>
                                 </div>
                                 <div class="pcard-number">02</div>
+                                <div class="pcard-click-hint">Click to explore →</div>
                             </div>
                             <div class="pcard-body">
                                 <div class="pcard-top">
                                     <span class="pcard-tag pcard-tag--blue">Internship deliverable</span>
-                                    <div class="pcard-links">
-                                        <a href="#" class="icon-link" aria-label="View on GitHub">
-                                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.489.5.09.682-.218.682-.483 0-.237-.009-.868-.014-1.703-2.782.602-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
-                                        </a>
-                                    </div>
                                 </div>
                                 <h3 class="pcard-title">RAG vs Keyword Search</h3>
                                 <p class="pcard-desc">A comparative system demonstrating semantic retrieval versus traditional keyword-based search. Explores how embedding-based retrieval fundamentally changes what "finding something" means.</p>
-                                <ul class="project-tech">
-                                    <li>Python</li>
-                                    <li>sentence-transformers</li>
-                                    <li>FAISS</li>
-                                    <li>Streamlit</li>
-                                </ul>
+                                <ul class="project-tech"><li>Python</li><li>sentence-transformers</li><li>FAISS</li><li>Streamlit</li></ul>
                             </div>
                         </article>
 
                         <!-- Card 3: Sol -->
-                        <article class="pcard">
+                        <article class="pcard" data-project="sol" tabindex="0" role="button" aria-label="Open Sol project details">
                             <div class="pcard-image">
                                 <div class="pcard-image-inner sol-visual">
                                     <div class="sol-demo">
@@ -227,38 +190,26 @@
                                             <div class="sol-avatar sol-avatar--nova">N</div>
                                         </div>
                                         <div class="sol-chat">
-                                            <div class="sol-bubble sol-bubble--ai">
-                                                <span class="sol-name">Atlas</span>
-                                                <span>I remember you mentioned that last Tuesday...</span>
-                                            </div>
+                                            <div class="sol-bubble sol-bubble--ai"><span class="sol-name">Atlas</span><span>I remember you mentioned that last Tuesday...</span></div>
                                             <div class="sol-bubble sol-bubble--user">Hey, I've been thinking about what you said.</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="pcard-number">03</div>
+                                <div class="pcard-click-hint">Click to explore →</div>
                             </div>
                             <div class="pcard-body">
                                 <div class="pcard-top">
                                     <span class="pcard-tag pcard-tag--violet">In development</span>
-                                    <div class="pcard-links">
-                                        <a href="#" class="icon-link" aria-label="View on GitHub">
-                                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.489.5.09.682-.218.682-.483 0-.237-.009-.868-.014-1.703-2.782.602-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
-                                        </a>
-                                    </div>
                                 </div>
                                 <h3 class="pcard-title">Sol</h3>
                                 <p class="pcard-desc">An emotionally realistic social AI platform built in Flutter. Deeply believable AI personalities with persistent memory, behavioral quirks, and real relationship arcs. Not a productivity tool — a presence.</p>
-                                <ul class="project-tech">
-                                    <li>Flutter</li>
-                                    <li>Dart</li>
-                                    <li>LLMs</li>
-                                    <li>Glassmorphic UI</li>
-                                </ul>
+                                <ul class="project-tech"><li>Flutter</li><li>Dart</li><li>LLMs</li><li>Glassmorphic UI</li></ul>
                             </div>
                         </article>
 
-                        <!-- Card 4: Aurora / placeholder -->
-                        <article class="pcard pcard--dim">
+                        <!-- Card 4: Aurora -->
+                        <article class="pcard pcard--dim" data-project="aurora" tabindex="0" role="button" aria-label="Open Aurora project details">
                             <div class="pcard-image">
                                 <div class="pcard-image-inner aurora-visual">
                                     <div class="aurora-orbs">
@@ -269,6 +220,7 @@
                                     </div>
                                 </div>
                                 <div class="pcard-number">04</div>
+                                <div class="pcard-click-hint">Click to explore →</div>
                             </div>
                             <div class="pcard-body">
                                 <div class="pcard-top">
@@ -276,21 +228,17 @@
                                 </div>
                                 <h3 class="pcard-title">Aurora</h3>
                                 <p class="pcard-desc">Something new is taking shape. More to reveal soon.</p>
-                                <ul class="project-tech">
-                                    <li>TBD</li>
-                                </ul>
+                                <ul class="project-tech"><li>TBD</li></ul>
                             </div>
                         </article>
 
                     </div><!-- /projects-track -->
                 </div><!-- /sticky inner -->
 
-                <!-- Progress bar -->
                 <div class="projects-progress-wrap">
                     <div class="projects-progress-bar" id="projectsProgress"></div>
                 </div>
-
-            </div><!-- /sticky outer -->
+            </div>
         </section>
 
         <!-- Contact -->
@@ -299,14 +247,11 @@
                 <p class="section-label reveal">Contact</p>
                 <div class="contact-block reveal">
                     <h2>Let's work on something.</h2>
-                    <p>
-                        Open to internships, research collaborations, and building things together.
-                        My inbox is always open.
-                    </p>
-                    <a href="mailto:aakash@example.com" class="btn btn-primary contact-cta">
-                        Say hello
+                    <p>Open to internships, research collaborations, and building things together. My inbox is always open.</p>
+                    <button class="btn btn-primary contact-cta" id="contactBtn">
+                        Contact me
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </a>
+                    </button>
                 </div>
             </div>
         </section>
@@ -315,12 +260,100 @@
 
     <footer class="footer">
         <p>Designed &amp; built by Aakash Kumar</p>
-        <p class="footer-links">
-            <a href="https://github.com/aakash-kr-7" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://www.linkedin.com/in/aakash-kumar-978671274/" target="_blank" rel="noopener">LinkedIn</a>
-        </p>
     </footer>
 
+    <!-- ═══════════════════════════════════════
+         PROJECT DETAIL MODAL
+    ═══════════════════════════════════════ -->
+    <div class="modal-backdrop" id="projectModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Project details">
+        <div class="modal-panel">
+            <button class="modal-close" id="modalClose" aria-label="Close">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+
+            <!-- Modal header -->
+            <div class="modal-header">
+                <div class="modal-title-block">
+                    <span class="modal-status" id="modalStatus"></span>
+                    <h2 class="modal-title" id="modalTitle"></h2>
+                    <p class="modal-subtitle" id="modalSubtitle"></p>
+                </div>
+                <div class="modal-header-links" id="modalLinks"></div>
+            </div>
+
+            <!-- Tab nav -->
+            <div class="modal-tabs" id="modalTabs" role="tablist"></div>
+
+            <!-- Tab content -->
+            <div class="modal-body" id="modalBody">
+
+                <!-- Images section -->
+                <div class="modal-section" id="modalImagesSection">
+                    <h3 class="modal-section-title">Screenshots</h3>
+                    <div class="modal-images" id="modalImages"></div>
+                </div>
+
+                <!-- Architecture -->
+                <div class="modal-section" id="modalArchSection">
+                    <h3 class="modal-section-title">Architecture</h3>
+                    <div class="modal-arch" id="modalArch"></div>
+                </div>
+
+                <!-- Documentation tabs -->
+                <div class="modal-section" id="modalDocsSection">
+                    <div class="modal-doc-content" id="modalDocContent"></div>
+                </div>
+
+                <!-- Tech stack -->
+                <div class="modal-section" id="modalTechSection">
+                    <h3 class="modal-section-title">Tech stack</h3>
+                    <ul class="modal-tech-list" id="modalTechList"></ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         CONTACT MODAL
+    ═══════════════════════════════════════ -->
+    <div class="modal-backdrop contact-modal-backdrop" id="contactModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Contact options">
+        <div class="contact-modal-panel">
+            <button class="modal-close" id="contactModalClose" aria-label="Close">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <p class="contact-modal-label">Reach out via</p>
+            <div class="contact-modal-options">
+                <a href="mailto:aakashkumar94303@gmail.com" class="contact-option contact-option--gmail">
+                    <span class="contact-option-icon">
+                        <!-- Gmail icon -->
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" fill="#EA4335"/>
+                        </svg>
+                    </span>
+                    <span class="contact-option-text">
+                        <span class="contact-option-name">Gmail</span>
+                        <span class="contact-option-value">aakashkumar94303@gmail.com</span>
+                    </span>
+                </a>
+                <a href="https://wa.me/917320048899" target="_blank" rel="noopener" class="contact-option contact-option--whatsapp">
+                    <span class="contact-option-icon">
+                        <!-- WhatsApp icon -->
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#25D366"/>
+                            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.108.548 4.091 1.504 5.814L.057 23.428a.5.5 0 0 0 .614.614l5.702-1.442A11.938 11.938 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 0 1-5.013-1.374l-.36-.214-3.714.939.97-3.62-.234-.373A9.808 9.808 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z" fill="#25D366"/>
+                        </svg>
+                    </span>
+                    <span class="contact-option-text">
+                        <span class="contact-option-name">WhatsApp</span>
+                        <span class="contact-option-value">+91 73200 48899</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="projects-data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

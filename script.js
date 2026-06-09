@@ -1,10 +1,20 @@
-/* =========================================================
-   AAKASH KUMAR — Portfolio Script
-   ========================================================= */
-
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const nav = document.querySelector(".nav");
+const navLinks = document.querySelectorAll(".nav-links a");
+const sections = document.querySelectorAll("section[id]");
+const typed = document.getElementById("typed");
+const canvas = document.getElementById("particle-canvas");
+const ctx = canvas?.getContext("2d");
+const projectsTrack = document.getElementById("projectsTrack");
+const projectsProgress = document.getElementById("projectsProgress");
+const projectModal = document.getElementById("projectModal");
+const modalClose = document.getElementById("modalClose");
+const contactModal = document.getElementById("contactModal");
+const contactModalClose = document.getElementById("contactModalClose");
+const contactBtn = document.getElementById("contactBtn");
+const visitorCount = document.getElementById("visitor-count");
+const projectCards = document.querySelectorAll(".pcard");
 
-/* ─── Typewriter ─── */
 const phrases = [
     "Building thoughtful technology.",
     "Currently building Aether.",
@@ -12,7 +22,6 @@ const phrases = [
     "CS student with real shipping energy."
 ];
 
-const typed = document.getElementById("typed");
 let phraseIndex = 0;
 let charIndex = 0;
 let deleting = false;
@@ -38,85 +47,49 @@ function tick() {
     }
     setTimeout(tick, deleting ? 32 : 50);
 }
-setTimeout(tick, 1200);
 
+setTimeout(tick, 800);
 
-/* ─── Cursor glow ─── */
-const cursorGlow = document.querySelector(".cursor-glow");
-if (cursorGlow && !prefersReducedMotion) {
-    let cursorX = window.innerWidth / 2;
-    let cursorY = window.innerHeight / 2;
-    let glowX = cursorX;
-    let glowY = cursorY;
-
-    window.addEventListener("mousemove", (e) => {
-        cursorX = e.clientX;
-        cursorY = e.clientY;
-    }, { passive: true });
-
-    function animateCursor() {
-        // Smooth lag for the glow
-        glowX += (cursorX - glowX) * 0.08;
-        glowY += (cursorY - glowY) * 0.08;
-        cursorGlow.style.left = glowX + "px";
-        cursorGlow.style.top  = glowY + "px";
-        requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
+function revealOnScroll() {
+    const revealEls = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                io.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    revealEls.forEach((el) => io.observe(el));
 }
 
-
-/* ─── Reveal on scroll ─── */
-const revealEls = document.querySelectorAll(".reveal");
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            revealObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
-
-revealEls.forEach((el) => revealObserver.observe(el));
-
-
-/* ─── Nav scroll state + active link ─── */
-const nav = document.querySelector(".nav");
-const navLinks = document.querySelectorAll(".nav-links a");
-const sections = document.querySelectorAll("section[id]");
-
-window.addEventListener("scroll", () => {
-    nav.classList.toggle("scrolled", window.scrollY > 60);
-}, { passive: true });
+revealOnScroll();
 
 const navObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         const id = entry.target.id;
         navLinks.forEach((link) => {
-            const isActive = link.getAttribute("href") === `#${id}`;
-            link.classList.toggle("active", isActive);
+            link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
         });
     });
-}, { threshold: 0.4 });
+}, { threshold: 0.45 });
+sections.forEach((section) => navObserver.observe(section));
 
-sections.forEach((s) => navObserver.observe(s));
-
-
-/* ─── Particle canvas ─── */
-const canvas = document.getElementById("particle-canvas");
-const ctx = canvas?.getContext("2d");
-let particles = [];
+window.addEventListener("scroll", () => {
+    nav?.classList.toggle("scrolled", window.scrollY > 40);
+}, { passive: true });
 
 function resizeCanvas() {
     if (!canvas || !ctx) return;
-    canvas.width  = window.innerWidth  * devicePixelRatio;
+    canvas.width = window.innerWidth * devicePixelRatio;
     canvas.height = window.innerHeight * devicePixelRatio;
-    canvas.style.width  = window.innerWidth  + "px";
-    canvas.style.height = window.innerHeight + "px";
+    canvas.style.width = `${window.innerWidth}px`;
+    canvas.style.height = `${window.innerHeight}px`;
     ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
 }
 
+let particles = [];
 function seedParticles() {
     if (!canvas) return;
     const count = Math.min(48, Math.max(20, Math.floor(window.innerWidth / 40)));
@@ -125,7 +98,7 @@ function seedParticles() {
         y: Math.random() * window.innerHeight,
         r: 0.6 + Math.random() * 1.4,
         vx: -0.12 + Math.random() * 0.24,
-        vy: -0.1  + Math.random() * 0.2,
+        vy: -0.1 + Math.random() * 0.2,
         a: 0.06 + Math.random() * 0.22,
         pulse: Math.random() * Math.PI * 2,
     }));
@@ -138,11 +111,10 @@ function drawParticles() {
     particles.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
-        if (p.x < -10) p.x = window.innerWidth  + 10;
-        if (p.x > window.innerWidth  + 10) p.x = -10;
+        if (p.x < -10) p.x = window.innerWidth + 10;
+        if (p.x > window.innerWidth + 10) p.x = -10;
         if (p.y < -10) p.y = window.innerHeight + 10;
         if (p.y > window.innerHeight + 10) p.y = -10;
-
         const alpha = p.a * (0.6 + 0.4 * Math.sin(t * 0.8 + p.pulse));
         ctx.beginPath();
         ctx.fillStyle = `rgba(137, 167, 255, ${alpha})`;
@@ -155,144 +127,170 @@ function drawParticles() {
 resizeCanvas();
 seedParticles();
 drawParticles();
-
 window.addEventListener("resize", () => {
     resizeCanvas();
     seedParticles();
 }, { passive: true });
 
-
-/* =========================================================
-   HORIZONTAL SCROLL — Projects
-   =========================================================
-   The outer div is tall (JS sets height = track scrollWidth).
-   The inner is sticky (100vh). As you scroll down the page,
-   we read the outer's scroll progress and drive translateX
-   on the track. Feels like sideways scrolling.
-   ========================================================= */
-
-const projectsOuter   = document.getElementById("projectsOuter");
-const projectsTrack   = document.getElementById("projectsTrack");
-const progressBar     = document.getElementById("projectsProgress");
-
-let trackScrollWidth = 0;
-let outerHeight      = 0;
-
-function measureProjects() {
-    if (!projectsOuter || !projectsTrack) return;
-
-    // Track total scrollable width (all cards + gaps)
-    // We subtract the viewport width because at the end
-    // the last card should be visible, not offscreen
-    trackScrollWidth = projectsTrack.scrollWidth - window.innerWidth;
-
-    // Make the outer tall enough to give us scroll distance == trackScrollWidth
-    // Plus some breathing room at each end
-    const totalScrollHeight = trackScrollWidth + window.innerHeight;
-    projectsOuter.style.height = totalScrollHeight + "px";
+function lockScroll(lock) {
+    document.body.style.overflow = lock ? "hidden" : "";
 }
 
-function updateProjectsScroll() {
-    if (!projectsOuter || !projectsTrack || prefersReducedMotion) return;
+function openModal(modal) {
+    if (!modal) return;
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    lockScroll(true);
+}
 
-    const outerRect = projectsOuter.getBoundingClientRect();
+function closeModal(modal) {
+    if (!modal) return;
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    lockScroll(false);
+}
 
-    // How far we've scrolled INTO the sticky zone
-    // outerRect.top goes from 0 (just entered) to negative (scrolled past)
-    const scrolled = -outerRect.top + window.innerHeight * 0; // start when top hits viewport top
+function buildProjectModal(project) {
+    document.getElementById("modalStatus").textContent = project.status;
+    document.getElementById("modalStatus").className = `modal-status modal-status--${project.statusTone}`;
+    document.getElementById("modalTitle").textContent = project.title;
+    document.getElementById("modalSubtitle").textContent = project.subtitle;
 
-    // Clamp between 0 and total scrollable distance
-    const maxScroll = projectsOuter.offsetHeight - window.innerHeight;
-    const clamped   = Math.max(0, Math.min(scrolled, maxScroll));
+    const links = document.getElementById("modalLinks");
+    links.innerHTML = "";
+    project.links.forEach((link) => {
+        const a = document.createElement("a");
+        a.href = link.href;
+        a.target = link.external ? "_blank" : "_self";
+        a.rel = link.external ? "noopener" : "";
+        a.className = "btn btn-ghost";
+        a.textContent = link.label;
+        links.appendChild(a);
+    });
 
-    // Progress 0 → 1
-    const progress = maxScroll > 0 ? clamped / maxScroll : 0;
+    const tabs = document.getElementById("modalTabs");
+    tabs.innerHTML = "";
+    const sections = [
+        { key: "overview", label: "Overview" },
+        { key: "screenshots", label: "Screenshots" },
+        { key: "architecture", label: "Architecture" },
+        { key: "docs", label: "Docs" },
+        { key: "stack", label: "Stack" },
+    ];
 
-    // Translate the track
-    const tx = -(progress * trackScrollWidth);
-    projectsTrack.style.transform = `translateX(${tx}px)`;
+    const body = document.getElementById("modalBody");
+    body.querySelectorAll(".modal-section").forEach((s) => s.hidden = true);
 
-    // Progress bar
-    if (progressBar) {
-        progressBar.style.width = (progress * 100) + "%";
+    function showTab(key) {
+        body.querySelectorAll(".modal-section").forEach((s) => s.hidden = true);
+        document.getElementById(`modal${key[0].toUpperCase()}${key.slice(1)}Section`).hidden = false;
+        tabs.querySelectorAll(".modal-tab").forEach((t) => t.classList.toggle("active", t.dataset.tab === key));
     }
 
-    // Add subtle parallax tilt to each card based on how centered it is
-    const cards = projectsTrack.querySelectorAll(".pcard");
-    const vw = window.innerWidth;
-    cards.forEach((card) => {
-        const rect = card.getBoundingClientRect();
-        const cardCenterX = rect.left + rect.width / 2;
-        const distFromCenter = (cardCenterX - vw / 2) / (vw / 2); // -1 to 1
-        const rotate = distFromCenter * 1.5; // degrees
-        const scale  = 1 - Math.abs(distFromCenter) * 0.02;
-        card.style.transform = `rotateY(${rotate}deg) scale(${scale}) translateY(${card.matches(":hover") ? "-4px" : "0"})`;
+    sections.forEach((item, index) => {
+        const btn = document.createElement("button");
+        btn.className = `modal-tab${index === 0 ? " active" : ""}`;
+        btn.type = "button";
+        btn.dataset.tab = item.key;
+        btn.textContent = item.label;
+        btn.addEventListener("click", () => showTab(item.key));
+        tabs.appendChild(btn);
     });
-}
 
-// Run measure on load + resize
-measureProjects();
-window.addEventListener("resize", measureProjects, { passive: true });
+    document.getElementById("modalOverviewSection").hidden = false;
+    document.getElementById("modalOverviewText").innerHTML = project.overview;
 
-// Hook into scroll
-window.addEventListener("scroll", updateProjectsScroll, { passive: true });
-updateProjectsScroll(); // initial call
-
-
-/* ─── Card entrance: stagger cards as track comes into view ─── */
-const pcards = document.querySelectorAll(".pcard");
-
-// Initially hide all cards (will animate in as they scroll into horizontal view)
-if (!prefersReducedMotion) {
-    pcards.forEach((card, i) => {
-        card.style.opacity = "0";
-        card.style.transform = "translateY(30px) scale(0.97)";
-        card.style.transition = "opacity 600ms ease, transform 600ms cubic-bezier(0.22, 1, 0.36, 1)";
-    });
-}
-
-// Observe projectsOuter to trigger card entrance
-const projectsEntranceObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            pcards.forEach((card, i) => {
-                setTimeout(() => {
-                    card.style.opacity = "1";
-                    card.style.transform = "";
-                }, i * 100);
-            });
-            projectsEntranceObserver.unobserve(entry.target);
+    const images = document.getElementById("modalImages");
+    images.innerHTML = "";
+    project.images.forEach((image) => {
+        if (image.src) {
+            const wrap = document.createElement("div");
+            wrap.className = "modal-img-slot";
+            const img = document.createElement("img");
+            img.src = image.src;
+            img.alt = image.alt;
+            wrap.appendChild(img);
+            images.appendChild(wrap);
+        } else {
+            const empty = document.createElement("div");
+            empty.className = "modal-img-empty";
+            empty.innerHTML = `<strong>${image.label}</strong><span>${image.helper}</span>`;
+            images.appendChild(empty);
         }
     });
-}, { threshold: 0.1 });
 
-if (projectsOuter) projectsEntranceObserver.observe(projectsOuter);
+    const arch = document.getElementById("modalArch");
+    arch.innerHTML = "";
+    if (project.architecture.src) {
+        const img = document.createElement("img");
+        img.className = "modal-arch-img";
+        img.src = project.architecture.src;
+        img.alt = project.architecture.alt;
+        arch.appendChild(img);
+    } else {
+        const empty = document.createElement("div");
+        empty.className = "modal-arch-empty";
+        empty.innerHTML = `<strong>${project.architecture.label}</strong><span>${project.architecture.helper}</span>`;
+        arch.appendChild(empty);
+    }
 
+    document.getElementById("modalDocContent").innerHTML = project.documentation;
 
-/* ─── Magnetic buttons ─── */
-if (!prefersReducedMotion) {
-    document.querySelectorAll(".btn").forEach((btn) => {
-        btn.addEventListener("mousemove", (e) => {
-            const rect = btn.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width  / 2;
-            const y = e.clientY - rect.top  - rect.height / 2;
-            btn.style.transform = `translate(${x * 0.18}px, ${y * 0.18}px)`;
-        });
-
-        btn.addEventListener("mouseleave", () => {
-            btn.style.transform = "";
-        });
+    const techList = document.getElementById("modalTechList");
+    techList.innerHTML = "";
+    project.tech.forEach((tech) => {
+        const li = document.createElement("li");
+        li.textContent = tech;
+        techList.appendChild(li);
     });
 }
 
+projectCards.forEach((card) => {
+    const open = () => {
+        const project = window.PROJECTS?.[card.dataset.project];
+        if (!project) return;
+        buildProjectModal(project);
+        openModal(projectModal);
+    };
+    card.addEventListener("click", open);
+    card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            open();
+        }
+    });
+});
 
-/* ─── Skill chip hover sparkle ─── */
-document.querySelectorAll(".skill-chip").forEach((chip) => {
-    chip.addEventListener("mouseenter", () => {
-        chip.style.transition = "color 200ms, border-color 200ms, background 200ms, transform 200ms";
-        chip.style.transform = "translateY(-2px)";
+modalClose?.addEventListener("click", () => closeModal(projectModal));
+projectModal?.addEventListener("click", (e) => {
+    if (e.target === projectModal) closeModal(projectModal);
+});
+
+function openContactModal() {
+    openModal(contactModal);
+}
+
+contactBtn?.addEventListener("click", openContactModal);
+contactModalClose?.addEventListener("click", () => closeModal(contactModal));
+contactModal?.addEventListener("click", (e) => {
+    if (e.target === contactModal) closeModal(contactModal);
+});
+
+document.querySelectorAll('a[href="#contact"]').forEach((link) => {
+    link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = document.getElementById("contact");
+        if (!target) return;
+        const top = target.getBoundingClientRect().top + window.scrollY - 84;
+        window.scrollTo({ top, behavior: "auto" });
     });
-    chip.addEventListener("mouseleave", () => {
-        chip.style.transform = "";
-    });
+});
+
+if (visitorCount) visitorCount.textContent = "0012";
+
+window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        closeModal(projectModal);
+        closeModal(contactModal);
+    }
 });

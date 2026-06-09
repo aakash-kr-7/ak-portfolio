@@ -14,6 +14,9 @@ const contactModalClose = document.getElementById("contactModalClose");
 const contactBtn = document.getElementById("contactBtn");
 const visitorCount = document.getElementById("visitor-count");
 const projectCards = document.querySelectorAll(".pcard");
+const projectsOuter = document.getElementById("projectsOuter");
+let projectsRaf = 0;
+let projectsMetrics = { trackWidth: 0, outerStart: 0, outerEnd: 0, maxScroll: 0 };
 
 const phrases = [
     "Building thoughtful technology.",
@@ -130,6 +133,7 @@ drawParticles();
 window.addEventListener("resize", () => {
     resizeCanvas();
     seedParticles();
+    measureProjects();
 }, { passive: true });
 
 function lockScroll(lock) {
@@ -282,7 +286,7 @@ document.querySelectorAll('a[href="#contact"]').forEach((link) => {
         const target = document.getElementById("contact");
         if (!target) return;
         const top = target.getBoundingClientRect().top + window.scrollY - 84;
-        window.scrollTo({ top, behavior: "auto" });
+        window.scrollTo({ top, behavior: "smooth" });
     });
 });
 
@@ -294,3 +298,54 @@ window.addEventListener("keydown", (e) => {
         closeModal(contactModal);
     }
 });
+
+function measureProjects() {
+    if (!projectsOuter) return;
+    const track = document.getElementById("projectsTrack");
+    if (!track) return;
+    const viewportWidth = window.innerWidth;
+    const trackWidth = track.scrollWidth;
+    const stickyHeight = window.innerHeight - parseInt(getComputedStyle(document.documentElement).getPropertyValue("--nav-h"), 10);
+    const travel = Math.max(0, trackWidth - viewportWidth);
+    projectsMetrics = {
+        trackWidth,
+        outerStart: 0,
+        outerEnd: 0,
+        maxScroll: travel
+    };
+    projectsOuter.style.height = `${travel + stickyHeight}px`;
+    projectsOuter.dataset.travel = String(travel);
+    updateProjects();
+}
+
+function updateProjects() {
+    if (!projectsOuter || prefersReducedMotion) return;
+    const track = document.getElementById("projectsTrack");
+    if (!track) return;
+
+    const rect = projectsOuter.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    const stickyHeight = viewportHeight - parseInt(getComputedStyle(document.documentElement).getPropertyValue("--nav-h"), 10);
+    const totalTravel = Math.max(0, projectsOuter.offsetHeight - stickyHeight);
+    const scrolled = Math.min(Math.max(-rect.top, 0), totalTravel);
+    const progress = totalTravel > 0 ? scrolled / totalTravel : 0;
+    const tx = -(projectsMetrics.maxScroll * progress);
+
+    track.style.transform = `translate3d(${tx}px, 0, 0)`;
+
+    if (projectsProgress) {
+        projectsProgress.style.width = `${progress * 100}%`;
+    }
+}
+
+function scheduleProjectsUpdate() {
+    if (projectsRaf) return;
+    projectsRaf = requestAnimationFrame(() => {
+        projectsRaf = 0;
+        updateProjects();
+    });
+}
+
+measureProjects();
+window.addEventListener("scroll", scheduleProjectsUpdate, { passive: true });
+window.addEventListener("resize", measureProjects, { passive: true });

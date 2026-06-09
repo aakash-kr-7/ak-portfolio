@@ -3,114 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aakash Kumar — CS Student & Builder</title>
-    <meta name="description" content="Computer Science student building thoughtful technology. Currently developing Aether, an AI-powered wellness platform.">
-    <link rel="stylesheet" href="style.css">
+    <title>Aakash Kumar - CS Student & Builder</title>
+    <meta name="description" content="A clean, recruiter-friendly portfolio for Aakash Kumar. Computer science student building AI, full-stack, and product work.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- Background grid -->
     <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb--one" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb--two" aria-hidden="true"></div>
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
-    <!-- Nav -->
     <nav class="nav">
         <span class="nav-logo">AK</span>
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
+            <li><a href="#building">Building</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
     <main>
-
-        <!-- Hero -->
         <section class="hero" id="home">
-            <div class="hero-inner">
-                <p class="hero-eyebrow">
-                    <span class="status-dot" aria-hidden="true"></span>
-                    Available for internships &amp; collaborations
-                </p>
-                <h1 class="hero-name">Aakash Kumar</h1>
-                <p class="hero-tagline">
-                    <span class="typed" id="typed" aria-label="Building thoughtful technology"></span><span class="cursor" aria-hidden="true">|</span>
-                </p>
-                <p class="hero-sub">
-                    CS student building at the intersection of AI and human experience.
-                    Currently: Aether — a wellness platform that understands you.
-                </p>
-                <div class="hero-actions">
-                    <a href="aakash_resume.pdf" target="_blank" rel="noopener" class="btn btn-primary">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                        Resume
-                    </a>
-                    <a href="https://github.com/aakash-kr-7" target="_blank" rel="noopener" class="btn btn-ghost">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.489.5.09.682-.218.682-.483 0-.237-.009-.868-.014-1.703-2.782.602-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
-                        GitHub
-                    </a>
-                    <a href="https://www.linkedin.com/in/aakash-kumar-978671274/" target="_blank" rel="noopener" class="btn btn-ghost">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                        LinkedIn
-                    </a>
+            <div class="hero-inner hero-shell">
+                <div class="terminal">
+                    <div class="terminal-bar">
+                        <span></span><span></span><span></span>
+                        <p>terminal</p>
+                    </div>
+                    <div class="terminal-body">
+                        <p class="terminal-line"><span class="terminal-prompt">$</span> whoami</p>
+                        <p class="terminal-output">Aakash Kumar - CS student building thoughtful software.</p>
+                        <p class="terminal-line"><span class="terminal-prompt">$</span> status</p>
+                        <p class="terminal-output"><span class="status-dot" aria-hidden="true"></span> available for internships, research, and good product work</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="scroll-indicator" aria-hidden="true">
-                <span>scroll</span>
-                <div class="scroll-line"></div>
+                <div class="hero-copy">
+                    <p class="hero-eyebrow">Clean portfolio. Clear signal. No clutter.</p>
+                    <h1 class="hero-name">Aakash Kumar</h1>
+                    <p class="hero-tagline">
+                        <span class="typed" id="typed" aria-label="Building thoughtful technology"></span><span class="cursor" aria-hidden="true">|</span>
+                    </p>
+                    <p class="hero-sub">
+                        I build AI and full-stack projects with a product mindset. This site is designed to help recruiters
+                        scan quickly while still leaving room for real project detail, screenshots, and architecture notes.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="./aakash_resume.pdf" target="_blank" rel="noopener" class="btn btn-primary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Resume
+                        </a>
+                        <a href="https://github.com/aakash-kr-7" target="_blank" rel="noopener" class="btn btn-ghost">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.489.5.09.682-.218.682-.483 0-.237-.009-.868-.014-1.703-2.782.602-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                            GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/in/aakash-kumar-978671274/" target="_blank" rel="noopener" class="btn btn-ghost">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- About -->
         <section class="section" id="about">
             <div class="section-inner">
                 <p class="section-label">About</p>
                 <div class="about-grid">
                     <div class="about-text">
-                        <h2>I build things that care about people.</h2>
+                        <h2>I build software that is easy to understand and easy to trust.</h2>
                         <p>
-                            I'm a Computer Science student with a focus on building technology that feels human.
-                            My work spans AI systems, full-stack development, and product thinking —
-                            with a recurring obsession: how software can understand context, not just commands.
+                            I'm a Computer Science student focused on AI systems, full-stack work, and products that keep the
+                            interface quiet while the thinking stays deep.
                         </p>
                         <p>
-                            When I'm not coding, I'm thinking about the gap between how people feel and how
-                            well current technology serves that. That's the problem Aether is trying to close.
+                            The layout here leaves room for project screenshots, architecture diagrams, and future case-study
+                            writeups without turning the portfolio into a demo page.
                         </p>
                     </div>
-                    <div class="skills-grid">
-                        <div class="skill-chip">Python</div>
-                        <div class="skill-chip">TypeScript</div>
-                        <div class="skill-chip">React</div>
-                        <div class="skill-chip">Node.js</div>
-                        <div class="skill-chip">LLMs / RAG</div>
-                        <div class="skill-chip">PostgreSQL</div>
-                        <div class="skill-chip">Docker</div>
-                        <div class="skill-chip">Git</div>
+                    <div class="skills-panel">
+                        <h3>Core stack</h3>
+                        <div class="skills-grid">
+                            <div class="skill-chip">Python</div>
+                            <div class="skill-chip">TypeScript</div>
+                            <div class="skill-chip">React</div>
+                            <div class="skill-chip">Node.js</div>
+                            <div class="skill-chip">FastAPI</div>
+                            <div class="skill-chip">PostgreSQL</div>
+                            <div class="skill-chip">RAG / LLMs</div>
+                            <div class="skill-chip">Docker</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects -->
+        <section class="section" id="building">
+            <div class="section-inner">
+                <p class="section-label">Currently Building</p>
+                <div class="building-strip">
+                    <div>
+                        <h2>Aether</h2>
+                        <p>
+                            An AI-powered wellness platform that tracks mood, shows emotional patterns, and recommends music
+                            and support with context.
+                        </p>
+                    </div>
+                    <div class="building-meta">
+                        <span>React</span>
+                        <span>FastAPI</span>
+                        <span>OpenAI API</span>
+                        <span>PostgreSQL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="section" id="projects">
             <div class="section-inner">
                 <p class="section-label">Projects</p>
-                <h2 class="section-title">Things I've built</h2>
+                <h2 class="section-title">Selected work</h2>
 
-                <!-- Featured project -->
-                <div class="project-featured">
+                <article class="project-featured">
                     <div class="project-featured-content">
-                        <div class="project-tag">In development</div>
+                        <div class="project-tag">Featured</div>
                         <h3>Aether</h3>
                         <p>
-                            An AI-powered mental and physical wellness platform. Aether tracks your mood,
-                            analyzes emotional patterns over time, recommends music matched to your state,
-                            and connects you to a community that understands. It doesn't just log —
-                            it listens.
+                            An AI-powered mental and physical wellness platform. Aether tracks mood, analyzes emotional
+                            patterns over time, recommends music matched to a state, and connects users to the right support.
                         </p>
                         <ul class="project-tech">
                             <li>React</li>
@@ -120,82 +144,97 @@
                             <li>Spotify API</li>
                         </ul>
                         <div class="project-links">
-                            <a href="#" class="project-link">
-                                View on GitHub
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            <a href="#" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-media-slot">
+                        <div class="media-placeholder">
+                            <span>Project screenshot</span>
+                            <p>Drop in a dashboard, product screen, or mobile mockup here.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="project-detail-grid">
+                    <article class="project-card">
+                        <div class="project-card-top">
+                            <div>
+                                <p class="project-card-label">Case study</p>
+                                <h3>RAG vs Keyword Search</h3>
+                            </div>
+                            <a href="#" class="icon-link" aria-label="View on GitHub">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.489.5.09.682-.218.682-.483 0-.237-.009-.868-.014-1.703-2.782.602-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
                             </a>
                         </div>
-                    </div>
-                    <div class="project-featured-visual" aria-hidden="true">
-                        <div class="aether-demo">
-                            <div class="demo-header">
-                                <div class="demo-dots">
-                                    <span></span><span></span><span></span>
-                                </div>
-                                <span class="demo-title">Aether</span>
-                            </div>
-                            <div class="demo-body">
-                                <p class="demo-label">Today's mood</p>
-                                <div class="mood-bar-wrap">
-                                    <div class="mood-bar" style="--fill: 72%"></div>
-                                </div>
-                                <p class="demo-insight">Feeling focused. Recommended: lo-fi study playlist.</p>
-                                <div class="demo-tags">
-                                    <span>Journaling</span>
-                                    <span>Community</span>
-                                    <span>Insights</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Secondary projects -->
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-card-top">
-                            <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-                            <div class="project-links">
-                                <a href="#" class="icon-link" aria-label="View on GitHub">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.489.5.09.682-.218.682-.483 0-.237-.009-.868-.014-1.703-2.782.602-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
-                                </a>
-                            </div>
-                        </div>
-                        <h3>RAG vs Keyword Search</h3>
                         <p>
-                            A comparative system demonstrating semantic retrieval versus traditional
-                            keyword-based search. Explores how embedding-based retrieval fundamentally
-                            changes what "finding something" means.
+                            A comparative system showing semantic retrieval versus traditional keyword search, with space for
+                            benchmark notes and results.
                         </p>
-                        <ul class="project-tech">
-                            <li>Python</li>
-                            <li>LangChain</li>
-                            <li>FAISS</li>
-                            <li>Streamlit</li>
-                        </ul>
-                    </div>
+                        <div class="project-image-slot">Screenshot slot</div>
+                    </article>
 
-                    <div class="project-card project-card--placeholder">
+                    <article class="project-card">
                         <div class="project-card-top">
-                            <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            <div>
+                                <p class="project-card-label">Engineering</p>
+                                <h3>Architecture notes</h3>
+                            </div>
                         </div>
-                        <h3>Next project</h3>
-                        <p>Something new is in the works.</p>
-                    </div>
+                        <p>
+                            Use this area for system diagrams, pipeline sketches, or design decisions. It is intentionally
+                            simple so the content stays readable.
+                        </p>
+                        <div class="project-arch-slot">Architecture image slot</div>
+                    </article>
                 </div>
-
             </div>
         </section>
 
-        <!-- Contact -->
+        <section class="section" id="graph">
+            <div class="section-inner">
+                <p class="section-label">GitHub</p>
+                <div class="graph-layout">
+                    <div>
+                        <h2 class="section-title">Contribution graph</h2>
+                        <p class="section-copy">
+                            This pulls in your live GitHub contribution heatmap so recruiters get a quick sense of your recent
+                            activity.
+                        </p>
+                    </div>
+                    <div class="graph-card">
+                        <img
+                            class="contrib-graph"
+                            src="https://ghchart.rshah.org/aakash-kr-7"
+                            alt="GitHub contribution graph for Aakash Kumar"
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="analytics">
+            <div class="section-inner">
+                <p class="section-label">Analytics</p>
+                <div class="analytics-banner">
+                    <div>
+                        <h2>Visitor analytics</h2>
+                        <p>
+                            Add your preferred tracker here, such as Plausible, Fathom, or Google Analytics.
+                        </p>
+                    </div>
+                    <code class="code-pill">&lt;script src="your-analytics-snippet"&gt;&lt;/script&gt;</code>
+                </div>
+            </div>
+        </section>
+
         <section class="section section--last" id="contact">
             <div class="section-inner">
                 <p class="section-label">Contact</p>
                 <div class="contact-block">
-                    <h2>Let's work on something.</h2>
+                    <h2>Let's work on something good.</h2>
                     <p>
-                        Open to internships, research collaborations, and building things together.
-                        My inbox is always open.
+                        Open to internships, research collaborations, and product-minded teams. If you are reviewing this
+                        on a custom domain later, this section is where the simple call to action should land.
                     </p>
                     <a href="mailto:your@email.com" class="btn btn-primary contact-cta">
                         Say hello
@@ -204,15 +243,14 @@
                 </div>
             </div>
         </section>
-
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <p>Designed &amp; built by Aakash Kumar</p>
         <p class="footer-links">
-            <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/aakash-kr-7" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://linkedin.com/in/aakash-kumar-978671274/" target="_blank" rel="noopener">LinkedIn</a>
+            <span>Custom domain ready</span>
         </p>
     </footer>
 

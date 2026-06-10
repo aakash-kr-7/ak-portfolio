@@ -285,8 +285,14 @@ document.querySelectorAll('a[href="#contact"]').forEach((link) => {
         e.preventDefault();
         const target = document.getElementById("contact");
         if (!target) return;
+        const root = document.documentElement;
+        const previousBehavior = root.style.scrollBehavior;
+        root.style.scrollBehavior = "auto";
         const top = target.getBoundingClientRect().top + window.scrollY - 84;
-        window.scrollTo({ top, behavior: "auto" });
+        window.scrollTo(0, top);
+        requestAnimationFrame(() => {
+            root.style.scrollBehavior = previousBehavior;
+        });
     });
 });
 
@@ -349,17 +355,3 @@ function scheduleProjectsUpdate() {
 measureProjects();
 window.addEventListener("scroll", scheduleProjectsUpdate, { passive: true });
 window.addEventListener("resize", measureProjects, { passive: true });
-
-const contactEmail = document.querySelector(".contact-option--gmail");
-if (contactEmail) {
-    contactEmail.href = "https://mail.google.com/mail/?view=cm&fs=1&to=aakashkumar94303@gmail.com";
-    contactEmail.target = "_blank";
-    contactEmail.rel = "noopener";
-}
-
-const contactWhatsApp = document.querySelector(".contact-option--whatsapp");
-if (contactWhatsApp) {
-    contactWhatsApp.href = "https://wa.me/917320048899";
-    contactWhatsApp.target = "_blank";
-    contactWhatsApp.rel = "noopener";
-}

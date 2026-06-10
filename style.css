@@ -27,8 +27,8 @@
     --max-w: 1120px;
     --font-sans: "Inter", system-ui, -apple-system, sans-serif;
     --font-mono: "JetBrains Mono", "Fira Code", monospace;
-    --card-w: min(500px, 82vw);
-    --card-h: 640px;
+    --card-w: min(720px, 86vw);
+    --card-h: min(86svh, 900px);
 }
 
 html {
@@ -124,6 +124,27 @@ nav, .footer, main {
     border-left: 1px solid var(--border-strong);
     padding-left: 12px;
     white-space: nowrap;
+}
+
+.visitor-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.03);
+    font-family: var(--font-mono);
+}
+
+.visitor-badge-label {
+    font-size: 11px;
+    color: var(--dim);
+}
+
+.visitor-badge strong {
+    font-size: 12px;
+    color: var(--text);
 }
 
 .nav-links {
@@ -441,7 +462,7 @@ nav, .footer, main {
 .projects-track {
     display: flex;
     gap: 24px;
-    padding: 20px max(28px, calc((100vw - var(--max-w)) / 2)) 16px;
+    padding: 20px max(24px, calc((100vw - min(1600px, 100vw)) / 2)) 16px;
     will-change: transform;
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
@@ -469,6 +490,8 @@ nav, .footer, main {
     cursor: pointer;
     outline: none;
     scroll-snap-align: start;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
 }
 
 .pcard::before {
@@ -514,7 +537,7 @@ nav, .footer, main {
 /* Card image area */
 .pcard-image {
     position: relative;
-    height: 270px;
+    height: 100%;
     flex-shrink: 0;
     overflow: hidden;
 }
@@ -539,11 +562,11 @@ nav, .footer, main {
 
 /* Card body */
 .pcard-body {
-    padding: 22px 24px 24px;
+    padding: 30px 28px 28px;
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 14px;
 }
 
 .pcard-top {
@@ -569,15 +592,15 @@ nav, .footer, main {
 .pcard-tag--dim    { color: var(--dim); background: rgba(255,255,255,0.03); border-color: var(--border); }
 
 .pcard-title {
-    font-size: 1.25rem;
-    letter-spacing: -0.03em;
+    font-size: clamp(1.4rem, 2vw, 2rem);
+    letter-spacing: -0.04em;
     font-weight: 600;
 }
 
 .pcard-desc {
     color: var(--muted);
-    font-size: 13.5px;
-    line-height: 1.7;
+    font-size: 15px;
+    line-height: 1.8;
     flex: 1;
 }
 
@@ -607,7 +630,7 @@ nav, .footer, main {
     border: 1px solid rgba(137,167,255,0.15);
     border-radius: var(--radius-md);
     padding: 18px;
-    width: 256px;
+    width: min(88%, 360px);
     backdrop-filter: blur(10px);
     box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(137,167,255,0.05);
 }
@@ -635,7 +658,7 @@ nav, .footer, main {
 .demo-body .demo-tags span { font-family: var(--font-mono); font-size: 9px; padding: 3px 8px; border-radius: 999px; background: rgba(137,167,255,0.1); color: var(--accent); border: 1px solid rgba(137,167,255,0.15); }
 
 .rag-visual { background: linear-gradient(135deg, #0c1219 0%, #0f1820 100%); }
-.rag-demo { width: 256px; background: rgba(12,18,25,0.9); border: 1px solid rgba(104,215,193,0.12); border-radius: var(--radius-md); padding: 20px; backdrop-filter: blur(10px); }
+.rag-demo { width: min(88%, 360px); background: rgba(12,18,25,0.9); border: 1px solid rgba(104,215,193,0.12); border-radius: var(--radius-md); padding: 20px; backdrop-filter: blur(10px); }
 .rag-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
 .rag-label { font-family: var(--font-mono); font-size: 10px; color: var(--dim); width: 28px; flex-shrink: 0; }
 .rag-bar { flex: 1; height: 6px; background: rgba(255,255,255,0.05); border-radius: 999px; overflow: hidden; }
@@ -651,7 +674,7 @@ nav, .footer, main {
 .rag-match { font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-2); }
 
 .sol-visual { background: linear-gradient(135deg, #100d1c 0%, #160d2a 100%); }
-.sol-demo { width: 270px; }
+.sol-demo { width: min(88%, 380px); }
 .sol-avatar-row { display: flex; justify-content: center; margin-bottom: 20px; }
 .sol-avatar { width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 13px; font-weight: 600; margin-left: -8px; transition: transform 200ms; }
 .sol-avatar:first-child { margin-left: 0; }
@@ -1033,6 +1056,7 @@ nav, .footer, main {
     .about-grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
     .nav-caption { display: none; }
+    .visitor-badge { display: none; }
     :root { --card-w: 82vw; }
     .projects-sticky-outer { padding-inline: 20px; }
 }
@@ -1042,8 +1066,9 @@ nav, .footer, main {
     .hero-actions { flex-direction: column; }
     .btn { justify-content: center; }
     .footer { text-align: center; }
-    :root { --card-w: 88vw; --card-h: 600px; }
-    .pcard-image { height: 220px; }
+    :root { --card-w: 90vw; --card-h: auto; }
+    .pcard { grid-template-columns: 1fr; }
+    .pcard-image { height: 260px; }
     .modal-header, .modal-tabs, .modal-body { padding-left: 20px; padding-right: 20px; }
     .contact-modal-backdrop { padding: 16px; }
     .contact-modal-backdrop .contact-modal-panel { padding: 24px; }

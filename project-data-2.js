@@ -5,10 +5,11 @@ Object.assign(window.PROJECTS, {
         title: "Sol",
         status: "In development",
         statusTone: "violet",
-        subtitle: "An emotionally realistic social AI platform with persistent memory and distinct personalities.",
+        subtitle: "A socially intelligent AI companion with persistent memory, distinct personalities, and relationship-aware conversation.",
         overview: `
-            <p><strong>Use this area</strong> for personality design notes, memory architecture, and interaction goals.</p>
-            <p>It is a good place to show how the system behaves over time, not just in a single demo.</p>
+            <p><strong>Sol</strong> is an emotionally realistic social AI platform designed to feel coherent over time, not just clever in a single chat.</p>
+            <p>It combines long-term memory, persona-specific behavior, and context-aware interaction so each companion can develop a recognizable voice, remember meaningful details, and respond in ways that feel consistent, warm, and human.</p>
+            <p>The product is built around the idea that the quality of a relationship comes from continuity: what the system remembers, how it interprets the user, and how it evolves across repeated conversations.</p>
         `,
         links: [
             { label: "GitHub", href: "#", external: false }
@@ -18,37 +19,15 @@ Object.assign(window.PROJECTS, {
             { label: "Screenshot 2", helper: "Use for relationship state or memory visualization." }
         ],
         architecture: {
-            label: "Architecture diagram placeholder",
+            label: "Memory-first companion architecture",
             helper: "Put the memory stack, persona routing, and message flow here."
         },
         documentation: `
-            <p><strong>Documentation idea:</strong> explain how memory persists, how personalities differ, and what makes responses believable.</p>
-            <p><strong>Notes:</strong> add examples of user journeys or important edge cases.</p>
+            <p><strong>Product focus:</strong> Sol is built to preserve continuity across conversations, making memory and personality feel like first-class product features rather than backend details.</p>
+            <p><strong>Core principles:</strong> every companion should feel distinct, the system should remember what matters, and responses should reflect a stable internal model of the relationship over time.</p>
+            <p><strong>What makes it different:</strong> the platform is designed around long-horizon behavior, emotional consistency, and believable progression instead of isolated prompt responses.</p>
+            <p><strong>Notes:</strong> the best examples to show are moments of recall, personality contrast, relationship state changes, and edge cases where memory meaningfully changes the response.</p>
         `,
-        tech: ["Flutter", "Dart", "LLMs", "Glassmorphic UI"]
-    },
-    aurora: {
-        title: "Aurora",
-        status: "Coming soon",
-        statusTone: "dim",
-        subtitle: "A future project placeholder for work you want to add later.",
-        overview: `
-            <p>This is a ready-made slot for a future project. Swap in the details once it is real.</p>
-        `,
-        links: [
-            { label: "GitHub", href: "#", external: false }
-        ],
-        images: [
-            { label: "Screenshot 1", helper: "Placeholder for future imagery." },
-            { label: "Screenshot 2", helper: "Placeholder for future imagery." }
-        ],
-        architecture: {
-            label: "Architecture diagram placeholder",
-            helper: "Placeholder for future system diagrams."
-        },
-        documentation: `
-            <p><strong>Placeholder:</strong> use this later for architecture and implementation notes.</p>
-        `,
-        tech: ["TBD"]
+        tech: ["Flutter", "Dart", "LLMs", "Persistent memory", "Persona routing", "Glassmorphic UI"]
     }
 });

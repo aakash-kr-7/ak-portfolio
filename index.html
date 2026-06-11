@@ -165,8 +165,9 @@ body:has(button:hover) #cursor-trail {
   color: var(--indigo);
   letter-spacing: 0.08em;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
   text-decoration: none;
 }
 .nav-logo::before {
@@ -177,6 +178,33 @@ body:has(button:hover) #cursor-trail {
   background: var(--cyan);
   box-shadow: 0 0 8px var(--cyan);
   animation: pulseDot 2.5s ease-in-out infinite;
+}
+.nav-logo-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-logo-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.nav-logo-tagline {
+  max-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nav-visit-count {
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
 }
 @keyframes pulseDot {
   0%,100% { box-shadow: 0 0 6px var(--cyan); transform: scale(1); }
@@ -1506,7 +1534,13 @@ body:has(button:hover) #cursor-trail {
 
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <a href="#home" class="nav-logo">AK</a>
+  <a href="#home" class="nav-logo">
+    <span class="nav-logo-main">AK</span>
+    <span class="nav-logo-meta">
+      <span class="nav-logo-tagline" id="navTagline">Write a short quote here</span>
+      <span class="nav-visit-count" id="visitCount">Visits: 0</span>
+    </span>
+  </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -2000,6 +2034,26 @@ body:has(button:hover) #cursor-trail {
 </div>
 
 <script>
+window.PROJECTS = {};
+window.PROJECTS_READY = (async () => {
+  const modules = await Promise.all([
+    import('./projects/aether/project.js'),
+    import('./projects/rag/project.js'),
+    import('./projects/sol/project.js'),
+    import('./projects/aurora/project.js'),
+  ]);
+  const track = document.getElementById('projectsTrack');
+  if (!track) return;
+  track.innerHTML = '';
+  modules.forEach(mod => {
+    const p = mod.project;
+    window.PROJECTS[p.key] = p;
+    const wrap = document.createElement('div');
+    wrap.innerHTML = p.cardHtml.trim();
+    const node = wrap.firstElementChild;
+    if (node) track.appendChild(node);
+  });
+})();
 /* ═══════════════════════════════
    PROJECT DATA
 ═══════════════════════════════ */
@@ -2160,7 +2214,7 @@ document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>revObs.obse
 /* ═══════════════════════════
    PROJECTS HORIZONTAL SCROLL
 ═══════════════════════════ */
-(function(){
+function initProjectsScroll(){
   const outer = document.getElementById('projectsOuter');
   const zone  = document.getElementById('projectsScrollZone');
   const track = document.getElementById('projectsTrack');
@@ -2215,7 +2269,7 @@ document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>revObs.obse
       window.scrollTo({top: zoneTop + targetScroll, behavior:'smooth'});
     });
   });
-})();
+}
 
 /* ═══════════════════════════
    MODAL SYSTEM
@@ -2293,13 +2347,14 @@ function buildModal(key){
   document.getElementById('modalBody').scrollTop=0;
 }
 
-document.querySelectorAll('.open-modal-btn').forEach(btn=>{
-  btn.addEventListener('click', e=>{
-    e.stopPropagation();
-    const key = btn.dataset.project;
-    buildModal(key);
-    openModal(projectModal);
-  });
+document.addEventListener('click', e=>{
+  const btn = e.target.closest('.open-modal-btn');
+  if(!btn) return;
+  const key = btn.dataset.project;
+  if(!key) return;
+  e.stopPropagation();
+  buildModal(key);
+  openModal(projectModal);
 });
 
 /* ═══════════════════════════
@@ -2312,6 +2367,15 @@ document.querySelectorAll('a[href="#contact"]').forEach(a=>{
     if(!t) return;
     window.scrollTo({top: t.getBoundingClientRect().top + scrollY - 80, behavior:'smooth'});
   });
+});
+
+window.PROJECTS_READY.then(() => {
+  initProjectsScroll();
+  const countKey = 'ak-portfolio-visits';
+  const visits = Number(localStorage.getItem(countKey) || '0') + 1;
+  localStorage.setItem(countKey, String(visits));
+  const countEl = document.getElementById('visitCount');
+  if (countEl) countEl.textContent = `Visits: ${visits}`;
 });
 </script>
 </body>

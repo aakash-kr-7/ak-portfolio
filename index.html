@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aakash Kumar - Backend Systems & Data Infrastructure</title>
-<meta name="description" content="Aakash Kumar is a software engineer focused on backend systems, data infrastructure, vector retrieval, async concurrency, and AI applications.">
+<meta name="description" content="Aakash Kumar portfolio: backend systems, data infrastructure, vector retrieval, AI products, and ML systems.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -12,18 +12,19 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 :root {
-  --ink: #080908;
-  --ink-2: #101310;
-  --paper: #f5f1e8;
-  --paper-2: #e6dfd0;
-  --muted: #9f9889;
-  --line: rgba(245, 241, 232, 0.16);
-  --line-strong: rgba(245, 241, 232, 0.3);
-  --cyan: #2ee6d6;
-  --green: #b7f264;
-  --rust: #ff7448;
-  --gold: #f2c14e;
-  --blue: #79a8ff;
+  --black: #050507;
+  --black-2: #0b0b12;
+  --black-3: #11111b;
+  --paper: #f7f3ea;
+  --soft: #d9d1c2;
+  --muted: #978f84;
+  --line: rgba(247, 243, 234, 0.14);
+  --line-strong: rgba(247, 243, 234, 0.28);
+  --amber: #ffb000;
+  --amber-2: #ff7a1a;
+  --violet: #9b5cff;
+  --blue: #5fb7ff;
+  --blue-2: #1d5cff;
   --font: "DM Sans", system-ui, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, monospace;
   --max: 1180px;
@@ -35,12 +36,13 @@ body {
   margin: 0;
   color: var(--paper);
   background:
-    linear-gradient(90deg, rgba(245,241,232,0.05) 1px, transparent 1px),
-    linear-gradient(rgba(245,241,232,0.04) 1px, transparent 1px),
-    linear-gradient(118deg, rgba(46,230,214,0.12), transparent 34%),
-    linear-gradient(292deg, rgba(255,116,72,0.14), transparent 38%),
-    linear-gradient(135deg, #080908 0%, #11130f 58%, #090b0d 100%);
-  background-size: 64px 64px, 64px 64px, auto, auto, auto;
+    linear-gradient(90deg, rgba(247,243,234,0.045) 1px, transparent 1px),
+    linear-gradient(rgba(247,243,234,0.035) 1px, transparent 1px),
+    linear-gradient(124deg, rgba(29,92,255,0.16), transparent 34%),
+    linear-gradient(238deg, rgba(155,92,255,0.16), transparent 42%),
+    linear-gradient(314deg, rgba(255,176,0,0.16), transparent 38%),
+    linear-gradient(135deg, #050507 0%, #0d0d16 52%, #08080c 100%);
+  background-size: 72px 72px, 72px 72px, auto, auto, auto, auto;
   font-family: var(--font);
   line-height: 1.5;
   overflow-x: hidden;
@@ -51,56 +53,53 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  pointer-events: none;
   z-index: -1;
+  pointer-events: none;
   background:
-    linear-gradient(120deg, rgba(245,241,232,0.05), transparent 28%, rgba(46,230,214,0.08) 48%, transparent 64%, rgba(255,116,72,0.06)),
-    repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 4px);
-  mix-blend-mode: screen;
-  opacity: 0.55;
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 5px),
+    linear-gradient(120deg, rgba(255,176,0,0.08), transparent 24%, rgba(95,183,255,0.08) 50%, transparent 68%, rgba(155,92,255,0.09));
+  opacity: 0.65;
 }
 
+body.project-open { overflow: hidden; }
 a { color: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; color: inherit; }
 
 .topbar {
   position: fixed;
-  z-index: 50;
+  z-index: 80;
   top: 0;
   left: 0;
   right: 0;
   display: grid;
-  grid-template-columns: minmax(210px, 1fr) auto minmax(210px, 1fr);
+  grid-template-columns: minmax(220px, 1fr) auto minmax(220px, 1fr);
   align-items: center;
   gap: 24px;
-  padding: 16px clamp(18px, 4vw, 48px);
+  padding: 14px clamp(18px, 4vw, 48px);
   border-bottom: 1px solid var(--line);
-  background: rgba(8, 9, 8, 0.78);
-  backdrop-filter: blur(20px);
+  background: rgba(5, 5, 7, 0.78);
+  backdrop-filter: blur(22px);
 }
 
 .brand {
   display: flex;
   align-items: center;
   gap: 12px;
-  text-decoration: none;
   min-width: 0;
+  text-decoration: none;
 }
 
 .brand-mark {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   display: grid;
   place-items: center;
-  border: 1px solid var(--line-strong);
-  background: var(--paper);
-  color: var(--ink);
+  border: 1px solid rgba(255,176,0,0.5);
+  background: linear-gradient(135deg, var(--amber), var(--violet));
+  color: #08080c;
   font-family: var(--mono);
-  font-weight: 600;
-}
-
-.brand-copy {
-  min-width: 0;
+  font-weight: 700;
 }
 
 .brand-name {
@@ -112,7 +111,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .brand-quote {
   display: block;
-  max-width: 300px;
+  max-width: 360px;
   color: var(--muted);
   font-family: var(--mono);
   font-size: 11px;
@@ -124,11 +123,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .nav {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 8px;
   padding: 6px;
   border: 1px solid var(--line);
-  background: rgba(245, 241, 232, 0.05);
+  background: rgba(247, 243, 234, 0.045);
 }
 
 .nav a {
@@ -142,7 +140,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .nav a:hover {
   color: var(--paper);
-  background: rgba(245, 241, 232, 0.08);
+  background: rgba(247, 243, 234, 0.08);
 }
 
 .header-actions {
@@ -151,54 +149,49 @@ button, a { -webkit-tap-highlight-color: transparent; }
   gap: 10px;
 }
 
-.icon-link, .primary-action, .secondary-action {
+.icon-link, .action-link, .contact-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   min-height: 44px;
   border: 1px solid var(--line-strong);
+  background: rgba(247, 243, 234, 0.055);
   text-decoration: none;
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 600;
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
 }
 
 .icon-link {
   width: 46px;
-  background: rgba(245, 241, 232, 0.06);
 }
 
-.primary-action {
+.action-link {
   padding: 0 18px;
-  background: var(--green);
-  color: var(--ink);
-  border-color: var(--green);
+  background: linear-gradient(135deg, var(--amber), var(--amber-2));
+  color: #090907;
+  border-color: rgba(255,176,0,0.72);
 }
 
-.secondary-action {
-  padding: 0 18px;
-  background: rgba(245, 241, 232, 0.06);
-}
-
-.icon-link:hover, .primary-action:hover, .secondary-action:hover {
+.icon-link:hover, .action-link:hover, .contact-link:hover {
   transform: translateY(-2px);
   border-color: var(--paper);
 }
 
 .visit-chip {
   position: fixed;
-  z-index: 60;
+  z-index: 70;
   left: clamp(18px, 3vw, 36px);
-  top: 88px;
+  top: 86px;
   display: inline-flex;
   align-items: center;
   gap: 10px;
   padding: 10px 12px;
-  border: 1px solid rgba(46, 230, 214, 0.42);
-  background: rgba(8, 9, 8, 0.82);
-  color: var(--cyan);
+  border: 1px solid rgba(95,183,255,0.5);
+  background: rgba(5, 5, 7, 0.82);
+  color: var(--blue);
   font-family: var(--mono);
   font-size: 12px;
   backdrop-filter: blur(18px);
@@ -206,13 +199,27 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .visit-chip svg { width: 18px; height: 18px; }
 
-main {
-  position: relative;
-  z-index: 1;
+.scroll-rail {
+  position: fixed;
+  z-index: 75;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: transparent;
 }
 
+.scroll-rail span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--amber), var(--violet), var(--blue));
+}
+
+main { position: relative; z-index: 1; }
+
 .section {
-  padding: clamp(80px, 12vw, 140px) clamp(18px, 4vw, 48px);
+  padding: clamp(82px, 12vw, 142px) clamp(18px, 4vw, 48px);
 }
 
 .wrap {
@@ -224,8 +231,8 @@ main {
   min-height: 100svh;
   display: grid;
   align-items: end;
-  padding-top: 140px;
-  padding-bottom: clamp(36px, 7vw, 82px);
+  padding-top: 142px;
+  padding-bottom: clamp(38px, 7vw, 84px);
 }
 
 .hero-grid {
@@ -240,7 +247,7 @@ main {
   align-items: center;
   gap: 10px;
   margin-bottom: 18px;
-  color: var(--cyan);
+  color: var(--amber);
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 600;
@@ -251,7 +258,7 @@ main {
   content: "";
   width: 38px;
   height: 1px;
-  background: var(--cyan);
+  background: var(--amber);
 }
 
 .hero h1 {
@@ -263,21 +270,20 @@ main {
   text-transform: uppercase;
 }
 
-.hero h1 span {
-  display: block;
-}
+.hero h1 span { display: block; }
 
 .hero h1 .outline {
   color: transparent;
-  -webkit-text-stroke: 1.5px rgba(245, 241, 232, 0.72);
+  -webkit-text-stroke: 1.5px rgba(247, 243, 234, 0.74);
 }
 
 .rotator {
+  min-height: 48px;
   margin-top: 26px;
   display: flex;
   align-items: center;
   gap: 16px;
-  color: var(--paper-2);
+  color: var(--soft);
   font-size: clamp(20px, 3vw, 34px);
   font-weight: 700;
 }
@@ -291,34 +297,23 @@ main {
 }
 
 #achievementRotator {
-  color: var(--green);
+  color: var(--amber);
+  text-shadow: 0 0 26px rgba(255,176,0,0.18);
 }
 
 .hero-copy {
   max-width: 760px;
   margin: 28px 0 0;
-  color: var(--paper-2);
+  color: var(--soft);
   font-size: clamp(18px, 2vw, 23px);
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 34px;
-}
-
-.hero-actions .primary-action,
-.hero-actions .secondary-action {
-  min-height: 58px;
-  padding-inline: 24px;
-  font-size: 13px;
 }
 
 .command-card {
   border: 1px solid var(--line-strong);
-  background: rgba(245, 241, 232, 0.06);
-  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.28);
+  background: rgba(247, 243, 234, 0.055);
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.34);
+  transform: translateY(var(--lift, 0));
+  transition: transform 220ms ease;
 }
 
 .command-head {
@@ -335,6 +330,7 @@ main {
 
 .signal {
   display: inline-flex;
+  align-items: end;
   gap: 5px;
 }
 
@@ -344,14 +340,14 @@ main {
   background: var(--line-strong);
 }
 
-.signal span:nth-child(2) { height: 28px; background: var(--cyan); }
-.signal span:nth-child(3) { height: 36px; background: var(--green); }
+.signal span:nth-child(2) { height: 28px; background: var(--violet); }
+.signal span:nth-child(3) { height: 36px; background: var(--amber); }
 
 .command-body {
   padding: 20px;
   font-family: var(--mono);
   font-size: 13px;
-  color: var(--paper-2);
+  color: var(--soft);
 }
 
 .line {
@@ -364,13 +360,14 @@ main {
 
 .line:last-child { border-bottom: 0; }
 .line strong { color: var(--paper); }
-.line span:last-child { color: var(--green); text-align: right; }
+.line span:last-child { color: var(--blue); text-align: right; }
 
 .stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid var(--line-strong);
   border-bottom: 1px solid var(--line-strong);
+  background: rgba(5,5,7,0.42);
 }
 
 .stat {
@@ -386,6 +383,7 @@ main {
   font-size: clamp(34px, 5vw, 58px);
   line-height: 1;
   letter-spacing: 0;
+  color: var(--paper);
 }
 
 .stat span {
@@ -406,7 +404,7 @@ main {
 }
 
 .kicker {
-  color: var(--rust);
+  color: var(--blue);
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 600;
@@ -422,7 +420,7 @@ main {
 
 .section-lede {
   margin: 0;
-  color: var(--paper-2);
+  color: var(--soft);
   font-size: clamp(17px, 2vw, 22px);
 }
 
@@ -432,39 +430,54 @@ main {
 }
 
 .project-card {
+  width: 100%;
   display: grid;
-  grid-template-columns: 180px minmax(0, 1fr) 260px;
+  grid-template-columns: 180px minmax(0, 1fr) 280px;
   gap: 24px;
   min-height: 250px;
   padding: clamp(20px, 3vw, 34px);
   border: 1px solid var(--line-strong);
-  background: rgba(245, 241, 232, 0.055);
+  background:
+    linear-gradient(110deg, rgba(255,176,0,0.08), transparent 32%),
+    linear-gradient(280deg, rgba(95,183,255,0.09), transparent 42%),
+    rgba(247, 243, 234, 0.05);
   position: relative;
   overflow: hidden;
+  text-align: left;
+  cursor: pointer;
 }
 
 .project-card::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(46,230,214,0.08), transparent);
-  transform: translateX(-100%);
-  transition: transform 700ms ease;
+  background: linear-gradient(90deg, transparent, rgba(155,92,255,0.12), transparent);
+  transform: translateX(-110%);
+  transition: transform 760ms ease;
 }
 
-.project-card:hover::before { transform: translateX(100%); }
+.project-card:hover::before,
+.project-card:focus-visible::before {
+  transform: translateX(110%);
+}
 
-.project-index {
+.project-card:hover,
+.project-card:focus-visible {
+  border-color: rgba(255,176,0,0.58);
+  outline: none;
+}
+
+.project-index,
+.project-title,
+.project-meta {
   position: relative;
   z-index: 1;
+}
+
+.project-index {
   font-family: var(--mono);
   color: var(--muted);
   font-size: 13px;
-}
-
-.project-title {
-  position: relative;
-  z-index: 1;
 }
 
 .project-title h3 {
@@ -476,18 +489,17 @@ main {
 
 .project-title p {
   margin: 0;
-  color: var(--paper-2);
+  color: var(--soft);
   font-size: 17px;
 }
 
 .project-meta {
-  position: relative;
-  z-index: 1;
   display: flex;
   flex-direction: column;
   gap: 12px;
   font-family: var(--mono);
   font-size: 12px;
+  color: var(--soft);
 }
 
 .pill-row {
@@ -499,8 +511,12 @@ main {
 .pill {
   padding: 7px 9px;
   border: 1px solid var(--line);
-  background: rgba(8, 9, 8, 0.3);
-  color: var(--paper-2);
+  background: rgba(5, 5, 7, 0.34);
+  color: var(--soft);
+}
+
+.open-hint {
+  color: var(--amber);
 }
 
 .proof-grid {
@@ -509,10 +525,15 @@ main {
   gap: 18px;
 }
 
+.proof-panel,
+.skill-block,
+.contact-band {
+  border: 1px solid var(--line-strong);
+  background: rgba(247, 243, 234, 0.05);
+}
+
 .proof-panel {
   padding: clamp(22px, 3vw, 34px);
-  border: 1px solid var(--line-strong);
-  background: rgba(245, 241, 232, 0.055);
 }
 
 .proof-panel h3 {
@@ -535,11 +556,11 @@ main {
   gap: 16px;
   padding-top: 14px;
   border-top: 1px solid var(--line);
-  color: var(--paper-2);
+  color: var(--soft);
 }
 
 .proof-list b {
-  color: var(--green);
+  color: var(--amber);
   font-family: var(--mono);
   font-size: 12px;
   text-transform: uppercase;
@@ -554,13 +575,11 @@ main {
 .skill-block {
   min-height: 190px;
   padding: 20px;
-  border: 1px solid var(--line);
-  background: rgba(8, 9, 8, 0.28);
 }
 
 .skill-block h3 {
   margin: 0 0 16px;
-  color: var(--cyan);
+  color: var(--violet);
   font-family: var(--mono);
   font-size: 12px;
   text-transform: uppercase;
@@ -568,22 +587,21 @@ main {
 
 .skill-block p {
   margin: 0;
-  color: var(--paper-2);
+  color: var(--soft);
   font-size: 15px;
 }
 
 .contact-band {
-  padding: clamp(48px, 8vw, 82px);
-  border: 1px solid var(--line-strong);
+  padding: clamp(42px, 7vw, 74px);
   background:
-    linear-gradient(135deg, rgba(183,242,100,0.15), transparent 36%),
-    linear-gradient(90deg, rgba(46,230,214,0.12), rgba(255,116,72,0.1));
+    linear-gradient(135deg, rgba(255,176,0,0.13), transparent 38%),
+    linear-gradient(295deg, rgba(95,183,255,0.12), rgba(155,92,255,0.12));
 }
 
 .contact-band h2 {
-  max-width: 850px;
+  max-width: 860px;
   margin: 0;
-  font-size: clamp(42px, 7vw, 90px);
+  font-size: clamp(42px, 7vw, 88px);
   line-height: 0.9;
   letter-spacing: 0;
 }
@@ -591,8 +609,29 @@ main {
 .contact-band p {
   max-width: 760px;
   margin: 24px 0 0;
-  color: var(--paper-2);
+  color: var(--soft);
   font-size: 20px;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.contact-link {
+  min-height: 58px;
+  padding: 0 22px;
+  background: rgba(5, 5, 7, 0.34);
+}
+
+.contact-link.whatsapp {
+  border-color: rgba(37, 211, 102, 0.48);
+}
+
+.contact-link.email {
+  border-color: rgba(95,183,255,0.48);
 }
 
 .footer {
@@ -606,10 +645,158 @@ main {
   border-top: 1px solid var(--line);
 }
 
+.detail-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  padding: clamp(14px, 3vw, 34px);
+  background: rgba(5, 5, 7, 0.78);
+  backdrop-filter: blur(24px);
+}
+
+.detail-backdrop.open {
+  display: grid;
+  place-items: center;
+}
+
+.detail-panel {
+  width: min(100%, 1080px);
+  max-height: min(860px, 92svh);
+  overflow: auto;
+  border: 1px solid var(--line-strong);
+  background:
+    linear-gradient(135deg, rgba(255,176,0,0.12), transparent 28%),
+    linear-gradient(300deg, rgba(95,183,255,0.14), rgba(155,92,255,0.12) 36%, transparent 70%),
+    rgba(9, 9, 14, 0.97);
+  box-shadow: 0 28px 120px rgba(0,0,0,0.64);
+}
+
+.detail-top {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+  padding: 18px clamp(18px, 3vw, 30px);
+  border-bottom: 1px solid var(--line);
+  background: rgba(9, 9, 14, 0.86);
+  backdrop-filter: blur(20px);
+}
+
+.detail-label {
+  color: var(--amber);
+  font-family: var(--mono);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.detail-close {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line-strong);
+  background: rgba(247, 243, 234, 0.06);
+  cursor: pointer;
+}
+
+.detail-body {
+  padding: clamp(22px, 4vw, 44px);
+}
+
+.detail-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: start;
+}
+
+.detail-hero h2 {
+  margin: 0;
+  font-size: clamp(44px, 8vw, 94px);
+  line-height: 0.9;
+  letter-spacing: 0;
+}
+
+.detail-hero p {
+  margin: 18px 0 0;
+  color: var(--soft);
+  font-size: 19px;
+}
+
+.detail-side {
+  display: grid;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.detail-side a,
+.detail-side span {
+  padding: 12px;
+  border: 1px solid var(--line);
+  background: rgba(5,5,7,0.34);
+  text-decoration: none;
+}
+
+.detail-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 34px;
+}
+
+.detail-block,
+.media-slot {
+  border: 1px solid var(--line);
+  background: rgba(5,5,7,0.32);
+  padding: 18px;
+}
+
+.detail-block h3,
+.media-slot h3 {
+  margin: 0 0 12px;
+  color: var(--blue);
+  font-family: var(--mono);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.detail-block p,
+.detail-block li {
+  color: var(--soft);
+}
+
+.detail-block ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.media-slot {
+  min-height: 150px;
+  display: grid;
+  align-content: end;
+}
+
+.media-slot p {
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
 .fade-in {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 600ms ease, transform 600ms ease;
+  transition: opacity 650ms ease, transform 650ms ease;
 }
 
 .fade-in.visible {
@@ -617,9 +804,18 @@ main {
   transform: translateY(0);
 }
 
-svg {
-  flex: 0 0 auto;
+.float-in {
+  opacity: 0;
+  transform: translateY(32px) scale(0.985);
+  transition: opacity 760ms ease, transform 760ms ease;
 }
+
+.float-in.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+svg { flex: 0 0 auto; }
 
 @media (max-width: 980px) {
   .topbar {
@@ -632,7 +828,9 @@ svg {
 
   .hero-grid,
   .section-head,
-  .proof-grid {
+  .proof-grid,
+  .detail-hero,
+  .detail-sections {
     grid-template-columns: 1fr;
   }
 
@@ -644,13 +842,8 @@ svg {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .stat:nth-child(2) {
-    border-right: 0;
-  }
-
-  .stat:nth-child(-n + 2) {
-    border-bottom: 1px solid var(--line);
-  }
+  .stat:nth-child(2) { border-right: 0; }
+  .stat:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
 
   .project-card {
     grid-template-columns: 1fr;
@@ -658,6 +851,10 @@ svg {
 
   .skills {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .media-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -671,9 +868,12 @@ svg {
     display: none;
   }
 
-  .header-actions .secondary-action,
-  .header-actions .icon-link span {
-    display: none;
+  .header-actions .icon-link {
+    width: 42px;
+  }
+
+  .action-link {
+    padding: 0 12px;
   }
 
   .visit-chip {
@@ -682,7 +882,7 @@ svg {
   }
 
   .hero {
-    padding-top: 94px;
+    padding-top: 96px;
   }
 
   .hero h1 {
@@ -693,14 +893,6 @@ svg {
     align-items: flex-start;
     flex-direction: column;
     gap: 8px;
-  }
-
-  .hero-actions {
-    display: grid;
-  }
-
-  .hero-actions a {
-    width: 100%;
   }
 
   .stats,
@@ -721,6 +913,14 @@ svg {
     grid-template-columns: 1fr;
   }
 
+  .contact-actions {
+    display: grid;
+  }
+
+  .contact-link {
+    width: 100%;
+  }
+
   .footer {
     flex-direction: column;
   }
@@ -728,12 +928,14 @@ svg {
 </style>
 </head>
 <body>
+<div class="scroll-rail" aria-hidden="true"><span id="scrollProgress"></span></div>
+
 <header class="topbar">
   <a class="brand" href="#home" aria-label="Aakash Kumar home">
     <span class="brand-mark">AK</span>
     <span class="brand-copy">
       <span class="brand-name">Aakash Kumar</span>
-      <span class="brand-quote" id="brandQuote">Build systems that remember, scale, and feel alive.</span>
+      <span class="brand-quote">Build systems that remember, scale, and feel alive.</span>
     </span>
   </a>
 
@@ -751,7 +953,7 @@ svg {
     <a class="icon-link" href="https://www.linkedin.com/in/aakash-kumar-978671274/" target="_blank" rel="noopener" aria-label="LinkedIn">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.23 0Z"/></svg>
     </a>
-    <a class="primary-action" href="./aakash_resume.pdf" target="_blank" rel="noopener">Resume</a>
+    <a class="action-link" href="./aakash_resume.pdf" target="_blank" rel="noopener">Resume</a>
   </div>
 </header>
 
@@ -774,20 +976,6 @@ svg {
           <span id="achievementRotator">live multi-user AI platform at $0 operational cost</span>
         </div>
         <p class="hero-copy fade-in">Software engineer focused on data-intensive systems: vector retrieval, async concurrency, normalized persistence layers, relational schema design, and scalable application backends.</p>
-        <div class="hero-actions fade-in">
-          <a class="primary-action" href="./aakash_resume.pdf" target="_blank" rel="noopener">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
-            Download Resume
-          </a>
-          <a class="secondary-action" href="https://github.com/aakash-kr-7" target="_blank" rel="noopener">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.36 6.84 9.72.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05A9.34 9.34 0 0 1 12 6.94c.85 0 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.64 1.03 2.76 0 3.95-2.34 4.82-4.57 5.08.36.32.68.94.68 1.9 0 1.38-.01 2.48-.01 2.82 0 .27.18.59.69.49A10.13 10.13 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/></svg>
-            GitHub
-          </a>
-          <a class="secondary-action" href="https://www.linkedin.com/in/aakash-kumar-978671274/" target="_blank" rel="noopener">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.23 0Z"/></svg>
-            LinkedIn
-          </a>
-        </div>
       </div>
 
       <aside class="command-card fade-in" aria-label="Profile snapshot">
@@ -818,64 +1006,11 @@ svg {
       <div class="section-head fade-in">
         <div>
           <div class="kicker">Selected systems</div>
-          <h2 class="section-title">Built like proof, not portfolio filler.</h2>
+          <h2 class="section-title">Click a project. Open the evidence.</h2>
         </div>
-        <p class="section-lede">The strongest work sits at the intersection of backend architecture, AI retrieval, mobile UX, and real deployment constraints. These are not mockups. These are engineered systems with numbers attached.</p>
+        <p class="section-lede">Each project card is now modular. The card and expanded detail content are sourced from that project folder, so screenshots, videos, architecture diagrams, and deeper writeups can live beside the project they explain.</p>
       </div>
-
-      <div class="project-grid">
-        <article class="project-card fade-in">
-          <div class="project-index">01 / Live platform</div>
-          <div class="project-title">
-            <h3>Sol</h3>
-            <p>Distributed messaging platform with persistent memory architecture. Pair-scoped ChromaDB namespaces, deterministic retrieval ranking, async worker pools, pair-level locks, and FCM on free-tier infrastructure.</p>
-          </div>
-          <div class="project-meta">
-            <div class="pill-row"><span class="pill">FastAPI</span><span class="pill">Flutter</span><span class="pill">ChromaDB</span><span class="pill">SQLite</span><span class="pill">FCM</span></div>
-            <span>Millions of memory interactions designed with zero cross-namespace leakage.</span>
-            <a href="https://github.com/aakash-kr-7/sol" target="_blank" rel="noopener">github.com/aakash-kr-7/sol</a>
-          </div>
-        </article>
-
-        <article class="project-card fade-in">
-          <div class="project-index">02 / ML system</div>
-          <div class="project-title">
-            <h3>Aurora</h3>
-            <p>Speech emotion recognition pipeline across RAVDESS, CREMA-D, and TESS. Feature extraction, normalization, augmentation, dataset harmonization, and benchmarking across SVM, BiLSTM, and CNN.</p>
-          </div>
-          <div class="project-meta">
-            <div class="pill-row"><span class="pill">Python</span><span class="pill">MFCC</span><span class="pill">CNN</span><span class="pill">BiLSTM</span><span class="pill">SVM</span></div>
-            <span>CNN selected after reaching 95% benchmark accuracy.</span>
-            <a href="https://github.com/aakash-kr-7/aurora" target="_blank" rel="noopener">github.com/aakash-kr-7/aurora</a>
-          </div>
-        </article>
-
-        <article class="project-card fade-in">
-          <div class="project-index">03 / Full stack</div>
-          <div class="project-title">
-            <h3>Aether</h3>
-            <p>Full-stack wellness application with Firestore backend, user-scoped collections, custom security rules, time-series journal schemas, and explicit async UI state handling.</p>
-          </div>
-          <div class="project-meta">
-            <div class="pill-row"><span class="pill">Flutter</span><span class="pill">Firebase</span><span class="pill">Firestore</span><span class="pill">Auth</span></div>
-            <span>Top 100 of 2000+ university projects at Bennett University.</span>
-            <a href="https://github.com/aakash-kr-7/Aether" target="_blank" rel="noopener">github.com/aakash-kr-7/Aether</a>
-          </div>
-        </article>
-
-        <article class="project-card fade-in">
-          <div class="project-index">04 / Research</div>
-          <div class="project-title">
-            <h3>Paraphrase-Robust Fake News Detection</h3>
-            <p>NLP misinformation pipeline over paraphrased claims designed to expose model failures under linguistically varied inputs, with weighted lexical-semantic ensembles outperforming standalone baselines.</p>
-          </div>
-          <div class="project-meta">
-            <div class="pill-row"><span class="pill">NLP</span><span class="pill">Sentence embeddings</span><span class="pill">TF-IDF</span><span class="pill">Ensembles</span></div>
-            <span>0.7956 F1, 0.9328 prediction consistency, 0.9375 paraphrase agreement.</span>
-            <a href="https://github.com/aakash-kr-7/fake-news-detection-ML-DL" target="_blank" rel="noopener">github.com/aakash-kr-7/fake-news-detection-ML-DL</a>
-          </div>
-        </article>
-      </div>
+      <div class="project-grid" id="projectGrid"></div>
     </div>
   </section>
 
@@ -890,7 +1025,7 @@ svg {
       </div>
 
       <div class="proof-grid">
-        <div class="proof-panel fade-in">
+        <div class="proof-panel float-in">
           <h3>Engineering Proof</h3>
           <ul class="proof-list">
             <li><b>Retrieval</b><span>Pair-scoped vector namespaces plus 5-factor deterministic ranking: similarity, salience, strength, recency decay, and unresolved-context boost.</span></li>
@@ -899,7 +1034,7 @@ svg {
           </ul>
         </div>
 
-        <div class="proof-panel fade-in">
+        <div class="proof-panel float-in">
           <h3>Competitive Proof</h3>
           <ul class="proof-list">
             <li><b>CodeChef</b><span>Peak rating 1730, Division 2, 3 star, global rank 55 in best contest.</span></li>
@@ -922,11 +1057,11 @@ svg {
       </div>
 
       <div class="skills">
-        <div class="skill-block fade-in"><h3>Languages</h3><p>Python, SQL, Dart, Java, C++</p></div>
-        <div class="skill-block fade-in"><h3>Backend</h3><p>FastAPI, REST APIs, relational database design, clean architecture</p></div>
-        <div class="skill-block fade-in"><h3>Data</h3><p>SQLite, Firestore, ChromaDB, vector retrieval, indexed query paths</p></div>
-        <div class="skill-block fade-in"><h3>ML</h3><p>Sentence embeddings, NLP, TF-IDF, deep learning, feature engineering</p></div>
-        <div class="skill-block fade-in"><h3>Mobile</h3><p>Flutter, Firebase Auth, Firebase Cloud Messaging, async UI states</p></div>
+        <div class="skill-block float-in"><h3>Languages</h3><p>Python, SQL, Dart, Java, C++</p></div>
+        <div class="skill-block float-in"><h3>Backend</h3><p>FastAPI, REST APIs, relational database design, clean architecture</p></div>
+        <div class="skill-block float-in"><h3>Data</h3><p>SQLite, Firestore, ChromaDB, vector retrieval, indexed query paths</p></div>
+        <div class="skill-block float-in"><h3>ML</h3><p>Sentence embeddings, NLP, TF-IDF, deep learning, feature engineering</p></div>
+        <div class="skill-block float-in"><h3>Mobile</h3><p>Flutter, Firebase Auth, Firebase Cloud Messaging, async UI states</p></div>
       </div>
     </div>
   </section>
@@ -936,11 +1071,15 @@ svg {
       <div class="contact-band fade-in">
         <h2>Bring me hard systems, strange product problems, and ambitious teams.</h2>
         <p>I am open to internships, backend engineering roles, AI infrastructure work, and collaborations where the software has to do more than look good in a screenshot.</p>
-        <div class="hero-actions">
-          <a class="primary-action" href="./aakash_resume.pdf" target="_blank" rel="noopener">Download Resume</a>
-          <a class="secondary-action" href="mailto:aakashkumar94303@gmail.com">aakashkumar94303@gmail.com</a>
-          <a class="secondary-action" href="https://github.com/aakash-kr-7" target="_blank" rel="noopener">GitHub</a>
-          <a class="secondary-action" href="https://www.linkedin.com/in/aakash-kumar-978671274/" target="_blank" rel="noopener">LinkedIn</a>
+        <div class="contact-actions">
+          <a class="contact-link whatsapp" href="https://wa.me/917320048899" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.8 11.8 0 0 0 12.08 0C5.55 0 .23 5.31.23 11.84c0 2.09.55 4.13 1.58 5.93L.13 24l6.38-1.67a11.9 11.9 0 0 0 5.57 1.42h.01c6.53 0 11.85-5.31 11.85-11.84 0-3.16-1.23-6.13-3.42-8.43ZM12.09 21.75h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.22-3.78.99 1.01-3.68-.24-.38a9.82 9.82 0 0 1-1.51-5.24C2.15 6.41 6.57 2 12.09 2c2.65 0 5.14 1.03 7.02 2.9a9.87 9.87 0 0 1 2.91 7.01c0 5.43-4.42 9.84-9.93 9.84Zm5.44-7.37c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.21 5.09 4.5.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35Z"/></svg>
+            +91 7320048899
+          </a>
+          <a class="contact-link email" href="mailto:aakashkumar94303@gmail.com">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="m4 7 8 6 8-6"/></svg>
+            aakashkumar94303@gmail.com
+          </a>
         </div>
       </div>
     </div>
@@ -952,7 +1091,111 @@ svg {
   <span>Built from resume facts. Tuned for signal.</span>
 </footer>
 
+<div class="detail-backdrop" id="projectDetail" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="detail-panel">
+    <div class="detail-top">
+      <span class="detail-label" id="detailLabel">Project</span>
+      <button class="detail-close" id="detailClose" type="button" aria-label="Close project details">X</button>
+    </div>
+    <div class="detail-body" id="detailBody"></div>
+  </div>
+</div>
+
+<script src="./projects/sol/project.js"></script>
+<script src="./projects/aurora/project.js"></script>
+<script src="./projects/aether/project.js"></script>
+<script src="./projects/fake-news/project.js"></script>
 <script>
+const projects = window.PORTFOLIO_PROJECTS || [];
+const projectGrid = document.getElementById('projectGrid');
+const detail = document.getElementById('projectDetail');
+const detailBody = document.getElementById('detailBody');
+const detailLabel = document.getElementById('detailLabel');
+const detailClose = document.getElementById('detailClose');
+
+const reveal = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    reveal.unobserve(entry.target);
+  });
+}, { threshold: 0.12 });
+
+function renderProjectCard(project, index) {
+  const card = document.createElement('button');
+  card.type = 'button';
+  card.className = 'project-card float-in';
+  card.dataset.project = project.key;
+  card.innerHTML = `
+    <div class="project-index">${String(index + 1).padStart(2, '0')} / ${project.type}</div>
+    <div class="project-title">
+      <h3>${project.title}</h3>
+      <p>${project.summary}</p>
+    </div>
+    <div class="project-meta">
+      <div class="pill-row">${project.tags.map(tag => `<span class="pill">${tag}</span>`).join('')}</div>
+      <span>${project.metric}</span>
+      <span class="open-hint">Open project room</span>
+    </div>
+  `;
+  card.addEventListener('click', () => openProject(project));
+  projectGrid.appendChild(card);
+  reveal.observe(card);
+}
+
+function openProject(project) {
+  detailLabel.textContent = `${project.type} / ${project.title}`;
+  detailBody.innerHTML = `
+    <section class="detail-hero">
+      <div>
+        <h2>${project.title}</h2>
+        <p>${project.longSummary}</p>
+      </div>
+      <aside class="detail-side">
+        ${project.github ? `<a href="${project.github}" target="_blank" rel="noopener">GitHub repository</a>` : '<span>Repository private or coming soon</span>'}
+        <span>${project.metric}</span>
+        <span>Assets folder: ${project.assetsPath}</span>
+      </aside>
+    </section>
+    <section class="detail-sections">
+      <div class="detail-block">
+        <h3>Architecture notes</h3>
+        <ul>${project.architecture.map(item => `<li>${item}</li>`).join('')}</ul>
+      </div>
+      <div class="detail-block">
+        <h3>What to demonstrate</h3>
+        <ul>${project.demoIdeas.map(item => `<li>${item}</li>`).join('')}</ul>
+      </div>
+    </section>
+    <section class="media-grid">
+      ${project.mediaSlots.map(slot => `
+        <div class="media-slot">
+          <h3>${slot.title}</h3>
+          <p>${slot.helper}</p>
+        </div>
+      `).join('')}
+    </section>
+  `;
+  detail.classList.add('open');
+  detail.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('project-open');
+}
+
+function closeProject() {
+  detail.classList.remove('open');
+  detail.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('project-open');
+}
+
+projects.forEach(renderProjectCard);
+detailClose.addEventListener('click', closeProject);
+detail.addEventListener('click', event => {
+  if (event.target === detail) closeProject();
+});
+window.addEventListener('keydown', event => {
+  if (event.key === 'Escape') closeProject();
+});
+
 const visitEl = document.getElementById('visitCount');
 const visitKey = 'ak-portfolio-visits';
 try {
@@ -990,15 +1233,20 @@ setInterval(() => {
   };
 }, 2200);
 
-const reveal = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add('visible');
-    reveal.unobserve(entry.target);
-  });
-}, { threshold: 0.12 });
+document.querySelectorAll('.fade-in,.float-in').forEach(el => reveal.observe(el));
 
-document.querySelectorAll('.fade-in').forEach(el => reveal.observe(el));
+const progress = document.getElementById('scrollProgress');
+const commandCard = document.querySelector('.command-card');
+function updateScrollEffects() {
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+  progress.style.width = `${pct * 100}%`;
+  commandCard?.style.setProperty('--lift', `${Math.max(-18, -window.scrollY * 0.03)}px`);
+}
+
+window.addEventListener('scroll', updateScrollEffects, { passive: true });
+window.addEventListener('resize', updateScrollEffects, { passive: true });
+updateScrollEffects();
 
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', event => {
